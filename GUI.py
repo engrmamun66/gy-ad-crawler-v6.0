@@ -97,31 +97,31 @@ class GUI():
         zahl = 1
         for i, (keyword, result) in enumerate(results.items()):
             for j in range(0, len(result[0])):
-                   stopword = 0
-                    for word in stopwords:
-                        if word in result[0][j] or word in result[3][j]:
-                            stopword = 1
-                            zahl -= 1
-                            break
-                        else:
-                            continue
-                    zahl += 1
-                    if stopword == 0:
-                        try:
-                            # print(zahl)
-                            worksheet.write('A{}'.format(zahl), result[7][j])  # screen id
-                            worksheet.write('B{}'.format(zahl), result[8][j])  # rank
-                            worksheet.write('C{}'.format(zahl), result[6])  # datum uhrzeit
-                            worksheet.write('D{}'.format(zahl), keyword)  # datum uhrzeit
-                            worksheet.write('E{}'.format(zahl), result[0][j])  # google result
-                            worksheet.write('F{}'.format(zahl), result[1][j])  # google result
-                            worksheet.write('G{}'.format(zahl), result[2][j])  # google result
-                            worksheet.write('H{}'.format(zahl), result[3][j])  # google result
-                            worksheet.write('J{}'.format(zahl), result[5][j])  # google ident result
-                            worksheet.write('I{}'.format(zahl), result[4][j])  # Von Google / ..
+                stopword = 0
+                for word in stopwords:
+                    if word in result[0][j] or word in result[3][j]:
+                        stopword = 1
+                        zahl -= 1
+                        break
+                    else:
+                        continue
+                zahl += 1
+                if stopword == 0:
+                    try:
+                        # print(zahl)
+                        worksheet.write('A{}'.format(zahl), result[7][j])  # screen id
+                        worksheet.write('B{}'.format(zahl), result[8][j])  # rank
+                        worksheet.write('C{}'.format(zahl), result[6])  # datum uhrzeit
+                        worksheet.write('D{}'.format(zahl), keyword)  # datum uhrzeit
+                        worksheet.write('E{}'.format(zahl), result[0][j])  # google result
+                        worksheet.write('F{}'.format(zahl), result[1][j])  # google result
+                        worksheet.write('G{}'.format(zahl), result[2][j])  # google result
+                        worksheet.write('H{}'.format(zahl), result[3][j])  # google result
+                        worksheet.write('J{}'.format(zahl), result[5][j])  # google ident result
+                        worksheet.write('I{}'.format(zahl), result[4][j])  # Von Google / ..
 
-                        except:
-                            continue
+                    except:
+                        continue
         workbook.close()
         return
 

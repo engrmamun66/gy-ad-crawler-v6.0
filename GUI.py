@@ -40,14 +40,10 @@ class GUI():
             keywords = open(kw_list, 'r', encoding='utf8')
             results = {}
             for keyword in keywords.readlines():
-
-                   try:
-                        results[keyword] = crawler_soup.read_ads(
-                            keyword, True)  # fff
-                        print(crawler_soup.read_ads(keyword, True))
-                    except Exception as e:
-
-                        pass
+                try:
+                    results[keyword] = crawler_soup.read_ads(keyword, True)
+                except Exception as e:
+                    pass
             self.safe(results)
         else:
             keywords = self.keywords.get("1.0", END).split("\n")

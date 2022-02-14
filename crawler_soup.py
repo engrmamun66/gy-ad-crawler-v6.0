@@ -82,14 +82,13 @@ def read_ads(input_keyword, open_browser=True):
             time.sleep(1)
             trys_google -= 1
 
-
         
-        content = driver.page_source.encode('utf-8').strip()
-        soup = BeautifulSoup(content, 'lxml')
-        try:
-            WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,("//*[text()='Ich stimme zu']")))).click()
-        except Exception as e:
-            WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,"//*[@id='zV9nZe']"))).click()
+            content = driver.page_source.encode('utf-8').strip()
+            soup = BeautifulSoup(content, 'lxml')
+            try:
+                WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,("//*[text()='Ich stimme zu']")))).click()
+            except Exception as e:
+                WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,"//*[@id='zV9nZe']"))).click()
         # driver.switch_to.default_content()
 
         # ==============================
@@ -282,7 +281,7 @@ def read_ads(input_keyword, open_browser=True):
                     google_title_list.append(str(title))
                     google_price_list.append(price)
                     google_anbieter_list.append(str(anbieter))
-                    google_ident_list.append("Youtube Shopping")
+                    google_ident_list.append("Youtube Shopping Ad")
                     id_list.append(str(screen_id) + "_ys")
               
 

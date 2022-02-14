@@ -101,7 +101,7 @@ def read_ads(input_keyword, open_browser=True):
         time.sleep(1)
         imageFileName = "C:\\Webcrawler\\Screens\\{}_g.png".format(screen_id)
         driver.save_screenshot(imageFileName)
-        keepScreenShot = True
+        keepScreenShot = False
 
 
         contents = soup.find_all('div', class_='mnr-c pla-unit')        
@@ -145,7 +145,7 @@ def read_ads(input_keyword, open_browser=True):
             ):
                 print(
                     f"\n=============Google Shopping Ad===============\nlink : {link}\nTitle : {title}\nPrice : {price}\nAnbieter : {anbieter}\nident_von : {ident_von}\keyword: {input_keyword}")
-                keepScreenShot = False
+                keepScreenShot = True
                 rank += 1
                 rank_list.append(str(rank))
                 google_link_list.append(str(link))
@@ -199,7 +199,7 @@ def read_ads(input_keyword, open_browser=True):
             ):
                 print(
                     f"\n=============Google Textanzeige Ad===============\nlink : {link}\nTitle : {title}\nPrice : {price}\nAnbieter : {anbieter}\nkeyword: {input_keyword}")
-                keepScreenShot = False
+                keepScreenShot = True
                 rank += 1
                 rank_list.append(str(rank))
                 google_link_list.append(str(link))
@@ -248,7 +248,7 @@ def read_ads(input_keyword, open_browser=True):
         time.sleep(1)
         imageFileName = "C:\\Webcrawler\\Screens\\{}_y.png".format(screen_id)
         driver.save_screenshot(imageFileName)
-        keepScreenShot = True
+        keepScreenShot = False
 
         # ===============================
         # ===============================
@@ -276,7 +276,7 @@ def read_ads(input_keyword, open_browser=True):
                     print(
                         f'\n=============Youtube Shopping Ad===============\nLink: {link}\nTitle: {title}\nAnbieter: {anbieter}\nkeyword: {input_keyword}')
                     rank += 1
-                    keepScreenShot = False
+                    keepScreenShot = True
                     rank_list.append(str(rank))
                     google_link_list.append(str(link))
                     google_title_list.append(str(title))
@@ -311,7 +311,7 @@ def read_ads(input_keyword, open_browser=True):
                         print(
                             f'\n=============Youtube Textanzeige Ad===============\nTitle: {title}\nLink: {link}\nkeyword: {input_keyword}')
                         rank += 1
-                        keepScreenShot = False
+                        keepScreenShot = True
                         rank_list.append(str(rank))
                         google_link_list.append(str(link))
                         google_title_list.append(str(title))

@@ -25,7 +25,7 @@ def get_inputed_keyword_file_name_by_cli():
 
 
 def crawl(keyword,driver):
-    return crawler_soup.read_ads(keyword,False)
+    return crawler_soup.read_ads(keyword, open_browser=True)
 
 def safe(results):
     time_now = str(datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
@@ -112,17 +112,18 @@ except:
 #     if(showBrowser=='n'): showBrowser = False
 # else:
 #     open_brower = False
-open_brower = True
 
-fileName_fromCli = get_inputed_keyword_file_name_by_cli()
-print(f'\n\t({fileName_fromCli}) Crawl is starting...  ')
-time.sleep(2)
 
-keywords = open(fileName_fromCli,'r', encoding='utf8') 
+# open_browser = True
+# fileName_fromCli = get_inputed_keyword_file_name_by_cli()
+# print(f'\n\t({fileName_fromCli}) Crawl is starting...  ')
+# time.sleep(2)
+
+keywords = open('keywords-all.txt', 'r', encoding='utf8')
 results = {}
 for keyword in keywords.readlines():
         try:
-            results[keyword] = crawler_soup.read_ads(keyword,showBrowser)
+            results[keyword] = crawler_soup.read_ads(keyword, open_browser=True)
             '''if len(results[keyword][0]) > 0:         debug
                 break'''
         except Exception as e:

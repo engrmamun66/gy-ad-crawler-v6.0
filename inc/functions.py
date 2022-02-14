@@ -21,6 +21,7 @@ def titleCleaner(title):
     title = title.split('...')[0]
     title = title.lstrip(" ,-“@!~$%^&*(){}[]\"'|\\/?<,>.`+*©€,")
     title = title.rstrip(" ,-“@!~$%^&*(){}[]\"'|\\/?<,>.`+*©€,")
+    title = title.replace("#SYNTAX", "")
     return title
 
 def getYtTitle(text):

@@ -35,6 +35,7 @@ def read_ads(input_keyword,driver):
     id_list = []
     rank = 0
     
+    
     _except = lambda param: ''# '__not-found: res_'+ str(param)
     _filter = lambda obj : obj.text
     

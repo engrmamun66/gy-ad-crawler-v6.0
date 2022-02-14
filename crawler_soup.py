@@ -19,7 +19,6 @@ from inc.functions import isYtAd, readYtAds, getYtTitle, getYtLink
 from inc.functions import isYsAd, getYsTitle, getYsPrice, getYsAnbieter
 
 
-
 #google_link_list = [] , google_title_list = [] , google_price_list = [] , google_anbieter_list = [] , youtube_link_list = [] , youtube_title_list = [] , youtube_price_list = [] , youtube_seller_list = [] ,
 
 def read_ads(input_keyword, open_browser=True):
@@ -82,18 +81,19 @@ def read_ads(input_keyword, open_browser=True):
             time.sleep(1)
             trys_google -= 1
 
-        
-            content = driver.page_source.encode('utf-8').strip()
-            soup = BeautifulSoup(content, 'lxml')
-            try:
-                WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,("//*[text()='Ich stimme zu']")))).click()
-            except Exception as e:
-                WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH,"//*[@id='zV9nZe']"))).click()
+        content = driver.page_source.encode('utf-8').strip()
+        soup = BeautifulSoup(content, 'lxml')
+        try:
+            WebDriverWait(driver, 3).until(EC.element_to_be_clickable(
+                (By.XPATH, ("//*[text()='Ich stimme zu']")))).click()
+        except Exception as e:
+            WebDriverWait(driver, 3).until(EC.element_to_be_clickable(
+                (By.XPATH, "//*[@id='zV9nZe']"))).click()
         # driver.switch_to.default_content()
 
         # ==============================
         # =========== Google Shopping Ad
-        # ==============================        
+        # ==============================
 
         # Controll Screen Shot
         driver.set_window_size(700, 1080)
@@ -102,11 +102,10 @@ def read_ads(input_keyword, open_browser=True):
         driver.save_screenshot(imageFileName)
         keepScreenShot = False
 
-
-        contents = soup.find_all('div', class_='mnr-c pla-unit')        
+        contents = soup.find_all('div', class_='mnr-c pla-unit')
         rank = 0
         for eachBlock in contents:
-    
+
             try:
                 link = eachBlock.find('div', class_='ropLT').find('a')['href']
             except:
@@ -154,16 +153,12 @@ def read_ads(input_keyword, open_browser=True):
                 brand_list.append(str(ident_von))
                 google_ident_list.append("Google Shopping Ad")
                 id_list.append(str(screen_id) + "_gs")
-        
-            
-                
 
         # =================================
         # =================================
         # =========== Google Textanzeige Ad
-        # =================================        
-        # =================================        
-
+        # =================================
+        # =================================
 
         contents = soup.find_all('div', class_='uEierd')
         rank = 0
@@ -213,26 +208,27 @@ def read_ads(input_keyword, open_browser=True):
                 os.remove(imageFileName)
             except:
                 print("\nFailed Delete To Image!")
-                
 
     # =======================================
     # =======================================
     # ========== WITH YOUTUBE ===============
     # =======================================
     # =======================================
-    
+
     if 1:
         # options = webdriver.ChromeOptions()
         # driver = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
         trys_youtube = 10
         while True:
-            if trys_youtube <= 0: break
+            if trys_youtube <= 0:
+                break
             trys_youtube -= 1
-            driver.get( "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+"))) 
+            driver.get(
+                "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+")))
             time.sleep(1)
             trys_youtube -= 1
-        
-        driver.set_window_size(700, 1080)        
+
+        driver.set_window_size(700, 1080)
 
         try:
             WebDriverWait(driver, 1.5).until(EC.element_to_be_clickable(
@@ -241,8 +237,9 @@ def read_ads(input_keyword, open_browser=True):
             try:
                 WebDriverWait(driver, 1.5).until(EC.element_to_be_clickable(
                     (By.XPATH, "//*[@id='yDmH0d']"))).click()
-            except: pass
-            
+            except:
+                pass
+
         # driver.switch_to.default_content()
         time.sleep(1)
         imageFileName = "C:\\Webcrawler\\Screens\\{}_y.png".format(screen_id)
@@ -252,21 +249,24 @@ def read_ads(input_keyword, open_browser=True):
         # ===============================
         # ===============================
         # =========== Youtube Shopping Ad
-        # ===============================  
-        # =============================== 
+        # ===============================
+        # ===============================
 
-        hasShoppinAdd = isYsAd(imgtotext(imagename=imageFileName, image_index=1, positionMap="200:900, 0:1500"))
+        hasShoppinAdd = isYsAd(imgtotext(
+            imagename=imageFileName, image_index=1, positionMap="200:900, 0:1500"))
         if hasShoppinAdd:
-            gridMaps = ["300:860, 0:335", #grid1
-                        "300:860, 335:620", #grid2
-                        "300:860, 620:905", #grid3
-                        "300:860, 905:1200", #grid4
+            gridMaps = ["300:860, 0:335",  # grid1
+                        "300:860, 335:620",  # grid2
+                        "300:860, 620:905",  # grid3
+                        "300:860, 905:1200",  # grid4
                         ]
             rank = 0
             for gridMap in gridMaps:
-                imageText = imgtotext(imagename=imageFileName, image_index=1, positionMap=gridMap, showimage=False, printText=False)
+                imageText = imgtotext(imagename=imageFileName, image_index=1,
+                                      positionMap=gridMap, showimage=False, printText=False)
 
-                link = "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+"))
+                link = "https://www.youtube.com/results?search_query={}".format(
+                    input_keyword.replace(" ", "+"))
                 title = getYsTitle(imageText)
                 anbieter = getYsAnbieter(imageText)
                 price = getYsPrice(imageText)
@@ -281,24 +281,22 @@ def read_ads(input_keyword, open_browser=True):
                     google_title_list.append(str(title))
                     google_price_list.append(price)
                     google_anbieter_list.append(str(anbieter))
-                    google_ident_list.append("Youtube Shopping Ad")
+                    google_ident_list.append("Youtube Shopping")
                     id_list.append(str(screen_id) + "_ys")
-              
 
-      
-         
         # ==================================
         # ==================================
         # =========== Youtube Textanzeige Ad
-        # ==================================   
-        # ==================================   
+        # ==================================
+        # ==================================
 
         imgMap_1 = "190:1500, 0:1500"
-        imageText = imgtotext(imagename=imageFileName, image_index=1, positionMap=imgMap_1, showimage=False, printText=False)
+        imageText = imgtotext(imagename=imageFileName, image_index=1,
+                              positionMap=imgMap_1, showimage=False, printText=False)
 
         if isYtAd(imageText):
             ads = readYtAds(imageText)
-            if len(ads):                
+            if len(ads):
                 rank = 0
                 for ad in ads:
 
@@ -324,14 +322,6 @@ def read_ads(input_keyword, open_browser=True):
 
         if not keepScreenShot:  # found not fount any add delete the image
             os.remove(imageFileName)
-
-
-    
-
-
-
-
-
 
     # close web driver
     driver.close()

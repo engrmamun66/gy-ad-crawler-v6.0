@@ -52,7 +52,7 @@ def safe(results):
     zahl = 1
     for i, (keyword, result) in enumerate(results.items()):
         for j in range(0, len(result[0])):
-               stopword = 0
+                stopword = 0
                 for word in stopwords:
                     if word in result[0][j] or word in result[3][j]:
                         print("stopword-----------")
@@ -137,11 +137,8 @@ except:
 keywords = open('keywords-all.txt', 'r', encoding='utf8')
 results = {}
 for keyword in keywords.readlines():
-       try:
-            results[keyword] = crawler_soup.read_ads(
-                keyword, open_browser=True)
-            '''if len(results[keyword][0]) > 0:         debug
-                break'''
-        except Exception as e:
-            pass
+    try:
+        results[keyword] = crawler_soup.read_ads(keyword, open_browser=True)      
+    except Exception as e:
+        pass
 safe(results)

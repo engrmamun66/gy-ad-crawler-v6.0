@@ -1,2 +1,2 @@
 ddd = "work".translate("ar")
-print(ddd)
+print('ddd')

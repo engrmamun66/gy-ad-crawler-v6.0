@@ -22,9 +22,21 @@ echo     ============================ Powerful Google And Youtube Crawer =======
 echo     ============================                                    ============================
 echo. 
 
+
+set /p con=.   START CRAWL(y/n)? 
+echo.
+if %con%==y (
+    
+    @REM python operation start 
+    @REM python pc.py
+    python cli.py
+    @REM dir /b
+       
+)
+
+
+echo.
 echo.
 
-python cli.py
-
-
+Goto  fromStart
 

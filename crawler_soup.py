@@ -79,7 +79,7 @@ def read_ads(input_keyword, open_browser=True):
             driver.get(
                 "https://www.google.de/search?q={}".format(input_keyword.replace(" ", "+")))
             time.sleep(1)
-            trys_google -= 1
+            
 
         content = driver.page_source.encode('utf-8').strip()
         soup = BeautifulSoup(content, 'lxml')
@@ -226,7 +226,6 @@ def read_ads(input_keyword, open_browser=True):
             driver.get(
                 "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+")))
             time.sleep(1)
-            trys_youtube -= 1
 
         driver.set_window_size(700, 1080)
 

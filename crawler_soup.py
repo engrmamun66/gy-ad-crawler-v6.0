@@ -75,20 +75,22 @@ def read_ads(input_keyword, open_browser=True):
         while True:
             if trys_google <= 0:
                 break
-            trys_google -= 1
+            trys_google -= 2
             driver.get(
                 "https://www.google.de/search?q={}".format(input_keyword.replace(" ", "+")))
-            time.sleep(1)
+            try:
+                WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
+                    (By.XPATH, ("//*[text()='Ich stimme zu']")))).click()
+            except Exception as e:
+                try:
+                    WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
+                        (By.XPATH, "//*[@id='zV9nZe']"))).click()
+                except:pass
+            # time.sleep(1)
             
 
         content = driver.page_source.encode('utf-8').strip()
         soup = BeautifulSoup(content, 'lxml')
-        try:
-            WebDriverWait(driver, 3).until(EC.element_to_be_clickable(
-                (By.XPATH, ("//*[text()='Ich stimme zu']")))).click()
-        except Exception as e:
-            WebDriverWait(driver, 3).until(EC.element_to_be_clickable(
-                (By.XPATH, "//*[@id='zV9nZe']"))).click()
         # driver.switch_to.default_content()
 
         # ==============================
@@ -222,22 +224,24 @@ def read_ads(input_keyword, open_browser=True):
         while True:
             if trys_youtube <= 0:
                 break
-            trys_youtube -= 1
+            trys_youtube -= 2
             driver.get(
                 "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+")))
-            time.sleep(1)
+            
+            try:
+                WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
+                    (By.XPATH, ("//*[text()='I Agree']")))).click()
+            except:
+                try:
+                    WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
+                        (By.XPATH, "//*[@id='yDmH0d']"))).click()
+                except:
+                    pass
+            # time.sleep(1)
 
         driver.set_window_size(700, 1080)
 
-        try:
-            WebDriverWait(driver, 1.5).until(EC.element_to_be_clickable(
-                (By.XPATH, ("//*[text()='I Agree']")))).click()
-        except:
-            try:
-                WebDriverWait(driver, 1.5).until(EC.element_to_be_clickable(
-                    (By.XPATH, "//*[@id='yDmH0d']"))).click()
-            except:
-                pass
+        
 
         # driver.switch_to.default_content()
         time.sleep(1)

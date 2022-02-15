@@ -71,11 +71,11 @@ def read_ads(input_keyword, open_browser=True):
 
     if 1:
 
-        trys_google = 10
+        trys_google = 1
         while True:
             if trys_google <= 0:
                 break
-            trys_google -= 2
+            trys_google -= 1
             driver.get(
                 "https://www.google.de/search?q={}".format(input_keyword.replace(" ", "+")))
             try:
@@ -153,7 +153,7 @@ def read_ads(input_keyword, open_browser=True):
                 google_price_list.append(price)
                 google_anbieter_list.append(str(anbieter))
                 brand_list.append(str(ident_von))
-                google_ident_list.append("Google Shopping Ad")
+                google_ident_list.append("Google Shopping Ads")
                 id_list.append(str(screen_id) + "_gs")
 
         # =================================
@@ -220,11 +220,11 @@ def read_ads(input_keyword, open_browser=True):
     if 1:
         # options = webdriver.ChromeOptions()
         # driver = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
-        trys_youtube = 10
+        trys_youtube = 1
         while True:
             if trys_youtube <= 0:
                 break
-            trys_youtube -= 2
+            trys_youtube -= 1
             driver.get(
                 "https://www.youtube.com/results?search_query={}".format(input_keyword.replace(" ", "+")))
             
@@ -284,7 +284,7 @@ def read_ads(input_keyword, open_browser=True):
                     google_title_list.append(str(title))
                     google_price_list.append(price)
                     google_anbieter_list.append(str(anbieter))
-                    google_ident_list.append("Youtube Shopping")
+                    google_ident_list.append("Youtube Shopping Ads")
                     id_list.append(str(screen_id) + "_ys")
 
         # ==================================

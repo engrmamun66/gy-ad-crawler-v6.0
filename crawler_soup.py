@@ -123,7 +123,8 @@ def read_ads(input_keyword, open_browser=True):
                 price = eachBlock.find(
                     'span', text=re.compile(".*€.*")).get_text()
             except:
-                price = '0.00 €'
+                # price = '0.00 €'
+                price = ''
 
             try:
                 anbieter = eachBlock.find(

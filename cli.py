@@ -93,7 +93,7 @@ def safe(results):
     print("======================")
     print("--- %s seconds ---" % (round(time.time() - code_start_time, 2)))
     print("======================")
-    wait_ = input()
+    # wait_ = input()
 
     return
 

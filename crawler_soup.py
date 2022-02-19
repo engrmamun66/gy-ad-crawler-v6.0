@@ -247,6 +247,7 @@ def read_ads(input_keyword, open_browser=True):
         # driver.switch_to.default_content()
         time.sleep(1)
         imageFileName = "C:\\Webcrawler\\Screens\\{}_y.png".format(screen_id)
+        time.sleep(2)
         driver.save_screenshot(imageFileName)
         keepScreenShot = False
 

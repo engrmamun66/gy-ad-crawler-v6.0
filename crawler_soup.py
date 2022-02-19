@@ -331,8 +331,8 @@ def read_ads(input_keyword, open_browser=True):
 
         print(
             f'\n===========================\n keepScreenShot_Ys : {keepScreenShot_Ys}\n keepScreenShot_Yt : {keepScreenShot_Yt}\n imageFileName : {imageFileName}\n=============================\n')
-        # if not keepScreenShot_Ys and not keepScreenShot_Yt:  # found not fount any add delete the image
-        #     os.remove(imageFileName)
+        if keepScreenShot_Ys == False and keepScreenShot_Yt == False:  # found not fount any add delete the image
+            os.remove(imageFileName)
 
     # close web driver
     driver.close()

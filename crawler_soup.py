@@ -11,11 +11,11 @@ import string
 import re
 import base64
 import os
-from inc.functions import resizeImage
 
 
 # For Yourtube Text
 from inc.withimage import imgtotext
+from inc.functions import resizeImage
 from inc.functions import isYtAd, readYtAds, getYtTitle, getYtLink
 from inc.functions import isYsAd, getYsTitle, getYsPrice, getYsAnbieter
 
@@ -70,7 +70,7 @@ def read_ads(input_keyword, open_browser=True):
     # =======================================
     # =======================================
 
-    if 0:
+    if 1:
 
         trys_google = 1
         while True:
@@ -219,8 +219,7 @@ def read_ads(input_keyword, open_browser=True):
     # ========== WITH YOUTUBE ===============
     # =======================================
     # =======================================
-    del(keepScreenShot)
-    del(imageFileName)
+
     if 1:
         # options = webdriver.ChromeOptions()
         # driver = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
@@ -247,13 +246,13 @@ def read_ads(input_keyword, open_browser=True):
 
         
 
-        # driver.switch_to.default_content()        
+        # driver.switch_to.default_content()
+        time.sleep(1)
         imageFileName = "C:\\Webcrawler\\Screens\\{}_y.png".format(screen_id)
         time.sleep(2)
         driver.save_screenshot(imageFileName)
         resizeImage(imageFileName)
-        keepScreenShot_Ys = False
-        keepScreenShot_Yt = False
+        keepScreenShot = False
 
         # ===============================
         # ===============================
@@ -284,7 +283,7 @@ def read_ads(input_keyword, open_browser=True):
                     print(
                         f'\n=============Youtube Shopping Ad===============\nLink: {link}\nTitle: {title}\nAnbieter: {anbieter}\nkeyword: {input_keyword}')
                     rank += 1
-                    keepScreenShot_Ys = True
+                    keepScreenShot = True
                     rank_list.append(str(rank))
                     google_link_list.append(str(link))
                     google_title_list.append(str(title))
@@ -297,8 +296,8 @@ def read_ads(input_keyword, open_browser=True):
         # ==================================
         # =========== Youtube Textanzeige Ad
         # ==================================
-        # ================================== 
-        #        
+        # ==================================
+
         imgMap_1 = "190:1500, 0:1500"
         imageText = imgtotext(imagename=imageFileName, image_index=1,
                               positionMap=imgMap_1, showimage=False, printText=False)
@@ -317,7 +316,7 @@ def read_ads(input_keyword, open_browser=True):
                         print(
                             f'\n=============Youtube Textanzeige Ad===============\nTitle: {title}\nLink: {link}\nkeyword: {input_keyword}')
                         rank += 1
-                        keepScreenShot_Yt = True
+                        keepScreenShot = True
                         rank_list.append(str(rank))
                         google_link_list.append(str(link))
                         google_title_list.append(str(title))
@@ -329,9 +328,7 @@ def read_ads(input_keyword, open_browser=True):
         else:
             print(f'\nThis is not an add !!!')
 
-        print(
-            f'\n===========================\n keepScreenShot_Ys : {keepScreenShot_Ys}\n keepScreenShot_Yt : {keepScreenShot_Yt}\n imageFileName : {imageFileName}\n=============================\n')
-        if keepScreenShot_Ys == False and keepScreenShot_Yt == False:  # found not fount any add delete the image
+        if not keepScreenShot:  # found not fount any add delete the image
             os.remove(imageFileName)
 
     # close web driver

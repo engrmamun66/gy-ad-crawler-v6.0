@@ -1,12 +1,11 @@
 # For Yourtube Text
 from typing import Iterator
 from inc.withimage import imgtotext
-from inc.functions import isYtAd, readYtAds, getYtTitle, getYtLink
 from inc.functions import isYsAd, getYsTitle, getYsPrice, getYsAnbieter
 
 
 hasShoppinAdd = isYsAd(imgtotext(
-    imagename='1.png', image_index=1, positionMap="50:900, 0:1500", showimage=False, printText=False))
+    imagename='2.png', image_index=1, positionMap="50:900, 0:1500", showimage=False, printText=False))
 
 if hasShoppinAdd:
     gridMaps = ["300:860, 0:335", #grid1
@@ -15,7 +14,7 @@ if hasShoppinAdd:
                 "300:860, 905:1200", #grid4
                 ]
     for gridMap in gridMaps:
-        imageText = imgtotext(imagename='1.png', image_index=1, positionMap=gridMap, showimage=True, printText=False)
+        imageText = imgtotext(imagename='2.png', image_index=1, positionMap=gridMap, showimage=True, printText=False)
         title = getYsTitle(imageText)
         anbieter = getYsAnbieter(imageText)
         price = getYsPrice(imageText)

@@ -1,5 +1,5 @@
-import validators
-
+from PIL import Image
+import PIL
 
 # =======================================================
 # =======================================================
@@ -134,3 +134,11 @@ def getYsPrice(text):
 
 def getYsAnbieter(text):
     return lineArray(text)[-2]
+
+
+def resizeImage(filename, fixed_width=1374):
+    image = Image.open(filename)
+    width_percent = (fixed_width / float(image.size[0]))
+    height_size = int((float(image.size[1]) * float(width_percent)))
+    image = image.resize((fixed_width, height_size), PIL.Image.NEAREST)
+    image.save(filename)

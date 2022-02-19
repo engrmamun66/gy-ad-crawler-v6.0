@@ -1,6 +1,8 @@
+import validators
+
 def isYtAd(text):
     if(isinstance(text, str)):
-        return "Ad " in text or "VISIT SITE" in text
+        return "Ad " in text or "VISIT SITE" in text or "WEBSITE BESUCHEN" in text
     else:
         return False
 
@@ -11,6 +13,7 @@ def exclude(line):
 
 def titleCleaner(title):
     title = title.replace("VISIT SITE", "")
+    title = title.replace("WEBSITE BESUCHEN", "")
     title = title.replace("[4", "")
     title = title.replace("[erty", "")
     title = title.replace("[erty", "")
@@ -31,10 +34,12 @@ def getYtTitle(text):
         for line in arr:
             line = exclude(line)
             line = line.lstrip('@ ')
-            if('Ad' in line):
+            if('Ad' in line or 'Anzeige' in line):
                 break
             title += " " + line
         theTitle = title.split('Visit')[0]
+        theTitle = title.split('Anzeige')[0]
+        theTitle = title.split('http')[0]
         return titleCleaner(theTitle)
     except: return ''
 
@@ -71,7 +76,8 @@ def readYtAds(text):
     singleAd = ''
     for line in text.split('\n'):
         singleAd += '\n' + line
-        if "http" in line:
+        # if "http" in line:
+        if validators.url(line) and "http" in line:
             ads.append(singleAd)
             singleAd = ''
  
@@ -89,7 +95,7 @@ def readYtAds(text):
 # ====================================================
 
 def isYsAd(text):
-    return "Suggested products" in text
+    return "Suggested products" in text or "Vorgeschlagene Produkte" in text
 
 def lineArray(adText):
     arr = []

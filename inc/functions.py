@@ -1,5 +1,15 @@
 import validators
 
+
+# =======================================================
+# =======================================================
+# ==============                       ==================
+# ============= Youtube Textanzeige Ad ==================
+# ==============                       ==================
+# =======================================================
+# =======================================================
+
+
 def isYtAd(text):
     if(isinstance(text, str)):
         return "Ad " in text or "VISIT SITE" in text or "WEBSITE BESUCHEN" in text
@@ -77,7 +87,7 @@ def readYtAds(text):
     for line in text.split('\n'):
         singleAd += '\n' + line
         # if "http" in line:
-        if validators.url(line) and "http" in line:
+        if "http" in line:
             ads.append(singleAd)
             singleAd = ''
  

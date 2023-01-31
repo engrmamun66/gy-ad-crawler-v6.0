@@ -81,7 +81,7 @@ def read_ads(input_keyword, open_browser=True):
                 "https://www.google.de/search?q={}".format(input_keyword.replace(" ", "+")))
             try:
                 WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
-                    (By.XPATH, ("//*[text()='Ich stimme zu']")))).click()
+                    (By.XPATH, ("//*[text()='Alle akzeptieren']")))).click()
             except Exception as e:
                 try:
                     WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
@@ -220,7 +220,7 @@ def read_ads(input_keyword, open_browser=True):
     # =======================================
     # =======================================
 
-    if 1:
+    if 0:
         # options = webdriver.ChromeOptions()
         # driver = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
         trys_youtube = 1

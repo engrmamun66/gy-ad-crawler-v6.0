@@ -16,6 +16,7 @@ import os
 # For Yourtube Text
 from inc.withimage import imgtotext
 from inc.functions import resizeImage
+from inc.settings import isOne
 from inc.functions import isYtAd, readYtAds, getYtTitle, getYtLink
 from inc.functions import isYsAd, getYsTitle, getYsPrice, getYsAnbieter
 
@@ -70,7 +71,7 @@ def read_ads(input_keyword, open_browser=True):
     # =======================================
     # =======================================
 
-    if 1:
+    if isOne['google']:
 
         trys_google = 1
         while True:
@@ -208,7 +209,7 @@ def read_ads(input_keyword, open_browser=True):
                 google_ident_list.append("Google Textanzeige")
                 id_list.append(str(screen_id) + "_gt")
 
-        if not keepScreenShot:  # found not fount any add delete the image
+        if not keepScreenShot and isOne['delte_img_if_noadd']:  # found not fount any add delete the image
             try:
                 os.remove(imageFileName)
             except:
@@ -220,7 +221,7 @@ def read_ads(input_keyword, open_browser=True):
     # =======================================
     # =======================================
 
-    if 0:
+    if isOne['youtube']:
         # options = webdriver.ChromeOptions()
         # driver = webdriver.Chrome('chromedriver_win32/chromedriver.exe')
         trys_youtube = 1
@@ -233,13 +234,9 @@ def read_ads(input_keyword, open_browser=True):
             
             try:
                 WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
-                    (By.XPATH, ("//*[text()='I Agree']")))).click()
+                    (By.CSS_SELECTOR, "button[aria-label='Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken akzeptieren']"))).click()
             except:
-                try:
-                    WebDriverWait(driver, 1).until(EC.element_to_be_clickable(
-                        (By.XPATH, "//*[@id='yDmH0d']"))).click()
-                except:
-                    pass
+                pass
             # time.sleep(1)
 
         driver.set_window_size(700, 1080)
@@ -328,7 +325,7 @@ def read_ads(input_keyword, open_browser=True):
         else:
             print(f'\nThis is not an add !!!')
 
-        if not keepScreenShot:  # found not fount any add delete the image
+        if not keepScreenShot and isOne['delte_img_if_noadd']:  # found not fount any add delete the image
             os.remove(imageFileName)
 
     # close web driver

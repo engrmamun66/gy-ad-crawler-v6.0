@@ -1,9 +1,6 @@
 isOne = {
-    'google': True,
-    'google_text_add': True,
-    'google_shop_add': True,
+    'google': False,
+    'keep_google_img': False,
     'youtube': True,
-    'youtube_text_add': True,
-    'youtube_shop_add': True,
-    'delte_img_if_noadd': False,
+    'keep_youtube_img': True,
 }

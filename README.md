@@ -52,6 +52,7 @@ Then install packages…
 
 ❖ Install tesseract-ocr-w64-setup-v5.0.1.20220118.exe , but not change default installation location 
 Important Note: Your Chrome version & your driver (chromedriver_win32/chromedriver.exe) 
+https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.1.20220118.exe
 version must be the same. Then, 
 
 1.   Disable automatic update of your chrome browser

@@ -12,6 +12,9 @@ B??JJYYJYY:     J5YYJJ?J&@@BB&&GYP#Y5@@#Y5@5Y#&&@@@&Y5@@@@@&5YGB#&@#Y5B5Y#@GYG@@
 @@@&PJ?77!!7?JJJ??JYG@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@#G5YJJJJJY5G#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ WWW.SOFTPROIT.COM
 
+❖ Version 5.0 [2021]
+❖ Version 6.0 [2022]
+❖ Version 7.0 [2023]
 
 ❖ GOOGEL & YOUTUBE CRAWLER :
 ============================
@@ -34,8 +37,6 @@ Windows 10 / Windows 11
 Minimum RAM: 2 GB
 Python version 3.9.10 
 pip version 22.0.3 
-
-
 
 
 Installation Guide :
@@ -63,6 +64,9 @@ version must be the same. Then,
 Application Sources :
 ====================
 https://softproit.com/google-youtube-data-crawler
+
+
+❖ Added inc/settings.py file to on off google/youtube add crawl
 
 
 

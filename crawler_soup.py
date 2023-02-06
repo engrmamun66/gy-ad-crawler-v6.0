@@ -209,7 +209,7 @@ def read_ads(input_keyword, open_browser=True):
                 google_ident_list.append("Google Textanzeige")
                 id_list.append(str(screen_id) + "_gt")
 
-        if not keepScreenShot and not isOne['keep_google_img']:  # found not fount any add delete the image
+        if not keepScreenShot:  # found not fount any add delete the image
             try:
                 os.remove(imageFileName)
             except:
@@ -256,7 +256,6 @@ def read_ads(input_keyword, open_browser=True):
         # =========== Youtube Shopping Ad
         # ===============================
         # ===============================
-
         hasShoppinAdd = isYsAd(imgtotext(
             imagename=imageFileName, image_index=1, positionMap="200:900, 0:1500"))
         if hasShoppinAdd:
@@ -325,7 +324,8 @@ def read_ads(input_keyword, open_browser=True):
         else:
             print(f'\nThis is not an add !!!')
 
-        if not keepScreenShot and not isOne['keep_youtube_img']:  # found not fount any add delete the image
+        #if not keepScreenShot and not isOne['keep_youtube_img']:
+        if not keepScreenShot:  # found not fount any add delete the image
             os.remove(imageFileName)
 
     # close web driver

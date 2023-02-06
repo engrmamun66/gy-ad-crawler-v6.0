@@ -12,7 +12,7 @@ import PIL
 
 def isYtAd(text):
     if(isinstance(text, str)):
-        return "Ad " in text or "VISIT SITE" in text or "WEBSITE BESUCHEN" in text
+        return "Anzeige" in text or "Ad " in text or "VISIT SITE" in text or "WEBSITE BESUCHEN" in text
     else:
         return False
 
@@ -93,7 +93,7 @@ def readYtAds(text):
  
     # c = len(ads)
     # print(f"------------------------------\n\nTotle ad is : {c}")
-    return ads;
+    return ads
 
 
 # ====================================================
@@ -105,7 +105,10 @@ def readYtAds(text):
 # ====================================================
 
 def isYsAd(text):
-    return "Suggested products" in text or "Vorgeschlagene Produkte" in text
+    if(isinstance(text, str)):
+        return "Suggested products" in text or "Vorgeschlagene Produkte" in text
+    else:
+        return False
 
 def lineArray(adText):
     arr = []

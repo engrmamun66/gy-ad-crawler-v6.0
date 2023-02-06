@@ -1,3 +1,12 @@
+
+"""
+“Copyright 2023 SOFT PRO IT” , and a statement of copying permission, saying that the program is distributed under the terms of the GNU General Public License.
+https://www.gnu.org/licenses/licenses.html
+
+EULA
+https://softproit.com/google-youtube-data-crawler/#licenses
+
+"""
 # https://pysource.com/2020/04/23/text-recognition-ocr-with-tesseract-and-opencv/
 #pip install opencv-python
 #pip install numpy

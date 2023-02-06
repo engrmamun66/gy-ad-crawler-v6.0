@@ -29,6 +29,8 @@ Website: https://softproit.com
 2. Google Textarize Ad
 3. Youtube Shopping Ad
 4. Youtube Textarize Ad
+5. Google Screenshot Saveing
+6. Youtube Screenshot Saveing
 
 
 ❖ System Requirements :
@@ -36,7 +38,7 @@ Website: https://softproit.com
 Windows 10 / Windows 11
 Minimum RAM: 2 GB
 Python version 3.9.10 
-pip version 22.0.3 
+pip version 22.0.3 / +
 
 
 Installation Guide :
